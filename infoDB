@@ -56,9 +56,9 @@ Sono le squadre (es. Ferrari, Mercedes) che costruiscono e gestiscono le auto.
 RESULTS
 Raccoglie tutti i risultati ottenuti dai piloti in ogni gara.
 	•	resultId: identificativo del risultato.
-	•	raceId: a quale gara si riferisce (collegamento a races).
-	•	driverId: quale pilota ha ottenuto il risultato.
-	•	constructorId: per quale team ha corso.
+	•	raceId: a quale gara si riferisce (collegamento alla tabella races).
+	•	driverId: quale pilota ha ottenuto il risultato. (collegamento alla tabella drivers)
+	•	constructorId: per quale team ha corso. (collegamento alla tabella constructors)
 	•	number: numero del pilota.
 	•	grid: posizione da cui è partito in griglia.
 	•	position: posizione finale ottenuta (es. 1 = vincitore).
@@ -86,7 +86,7 @@ Spiega come è finita la gara per ciascun pilota.
 QUALIFYING
 Dati delle qualifiche del sabato, che determinano la griglia di partenza.
 	•	qualifyId: identificativo.
-	•	raceId, driverId, constructorId: riferimenti alla gara, pilota, squadra.
+	•	raceId, driverId, constructorId: riferimenti alla gara, pilota, squadra. (collegamenti alle varie tabelle)
 	•	number: numero del pilota.
 	•	position: posizione in griglia ottenuta.
 	•	q1, q2, q3: tempi registrati nelle tre sessioni di qualifica.
@@ -95,7 +95,7 @@ Dati delle qualifiche del sabato, che determinano la griglia di partenza.
 
 PITSTOPS
 Dettaglia tutte le soste ai box fatte dai piloti durante la gara.
-	•	raceId, driverId: identificano gara e pilota.
+	•	raceId, driverId: identificano gara e pilota. (collegamento alla tabella drivers e alla tabella races)
 	•	stop: numero della sosta (prima, seconda, ecc.).
 	•	lap: giro in cui è entrato ai box.
 	•	time: orario del pit stop.
@@ -106,7 +106,7 @@ Dettaglia tutte le soste ai box fatte dai piloti durante la gara.
 
 LAPTIMES
 Registra tutti i tempi giro per giro di ogni pilota.
-	•	raceId, driverId, lap: identificano il tempo di un certo pilota in un certo giro.
+	•	raceId, driverId, lap: identificano il tempo di un certo pilota in un certo giro. (collegamento alla tabella drivers e alla tabella races)
 	•	position: posizione occupata durante quel giro.
 	•	time: tempo impiegato.
 	•	milliseconds: tempo in millisecondi.
@@ -116,8 +116,8 @@ Registra tutti i tempi giro per giro di ogni pilota.
 DRIVERSTANDINGS
 Contiene la classifica dei piloti aggiornata dopo ogni gara.
 	•	driverStandingsId: identificativo.
-	•	raceId: a quale gara è aggiornato.
-	•	driverId: pilota.
+	•	raceId: a quale gara è aggiornato. (collegamento alla tabella races)
+	•	driverId: pilota. (collegamento alla tabella drivers)
 	•	points: punti totali.
 	•	position: posizione in classifica.
 	•	wins: gare vinte fino a quel momento.
@@ -125,10 +125,10 @@ Contiene la classifica dei piloti aggiornata dopo ogni gara.
 ⸻
 
 CONSTRUCTORSTANDINGS
-Come sopra, ma per i team.
+Come sopra, ma per i team --> Contiene la classifica dei constructors aggiornata dopo ogni gara.
 	•	constructorStandingsId: identificativo.
-	•	raceId: a quale gara è aggiornata.
-	•	constructorId: scuderia.
+	•	raceId: a quale gara è aggiornata. (collegamento alla tabella races)
+	•	constructorId: scuderia. (collegamento alla tabella constructors)
 	•	points: punti totali.
 	•	position: posizione in classifica.
 	•	wins: gare vinte dalla scuderia.
