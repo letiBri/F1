@@ -1,6 +1,6 @@
 SEASONS
 Questa tabella contiene tutte le stagioni disputate in Formula 1.
-	•	year: è l’anno della stagione (es. 2022). È la chiave primaria.
+	•	year: è l’anno della stagione (es. 2022). È la chiave primaria. Ogni race fa riferimento a un anno tramite year
 	•	url: è un link al sito ufficiale o alla pagina con i dettagli di quella stagione.
 
 ⸻
