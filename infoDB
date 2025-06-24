@@ -1,0 +1,144 @@
+SEASONS
+Questa tabella contiene tutte le stagioni disputate in Formula 1.
+	•	year: è l’anno della stagione (es. 2022). È la chiave primaria.
+	•	url: è un link al sito ufficiale o alla pagina con i dettagli di quella stagione.
+
+⸻
+
+RACES
+Qui ci sono tutte le gare svolte. Ogni stagione ha più gare (Gran Premi).
+	•	raceId: identificativo univoco della gara.
+	•	year: anno in cui si è svolta la gara.
+	•	round: il numero progressivo della gara all’interno della stagione (es. 1° GP, 2° GP…).
+	•	circuitId: il circuito in cui si è corsa la gara (collegato alla tabella circuits).
+	•	name: nome del Gran Premio (es. “Italian Grand Prix”).
+	•	date: data della gara.
+	•	time: orario di inizio.
+	•	url: link ai dettagli della gara.
+
+⸻
+
+CIRCUITS
+Contiene l’elenco di tutti i circuiti di Formula 1.
+	•	circuitId: identificativo univoco del circuito.
+	•	circuitRef: nome interno o abbreviazione del circuito.
+	•	name: nome ufficiale del circuito.
+	•	location: città dove si trova.
+	•	country: nazione.
+	•	lat, lng, alt: coordinate geografiche (latitudine, longitudine, altitudine).
+	•	url: link alla descrizione del circuito.
+
+⸻
+
+DRIVERS
+Contiene tutti i piloti che hanno corso almeno una gara.
+	•	driverId: identificativo del pilota.
+	•	driverRef: nome tecnico/informatico del pilota.
+	•	number: numero con cui gareggia.
+	•	code: abbreviazione del nome (es. VER per Verstappen).
+	•	forename, surname: nome e cognome del pilota.
+	•	dob: data di nascita.
+	•	nationality: nazionalità.
+	•	url: link alla biografia o alla scheda del pilota.
+
+⸻
+
+CONSTRUCTORS
+Sono le squadre (es. Ferrari, Mercedes) che costruiscono e gestiscono le auto.
+	•	constructorId: identificativo della scuderia.
+	•	constructorRef: nome tecnico.
+	•	name: nome completo del team.
+	•	nationality: paese di provenienza.
+	•	url: link ufficiale alla scuderia.
+
+⸻
+
+RESULTS
+Raccoglie tutti i risultati ottenuti dai piloti in ogni gara.
+	•	resultId: identificativo del risultato.
+	•	raceId: a quale gara si riferisce (collegamento a races).
+	•	driverId: quale pilota ha ottenuto il risultato.
+	•	constructorId: per quale team ha corso.
+	•	number: numero del pilota.
+	•	grid: posizione da cui è partito in griglia.
+	•	position: posizione finale ottenuta (es. 1 = vincitore).
+	•	positionText: versione testuale del risultato (es. “R” per ritirato).
+	•	positionOrder: numero utile per ordinare i risultati.
+	•	points: punti ottenuti in quella gara.
+	•	laps: numero di giri completati.
+	•	time: tempo totale di gara (se ha terminato).
+	•	milliseconds: tempo in millisecondi.
+	•	fastestLap: giro in cui ha fatto il miglior tempo.
+	•	rank: posizione nella classifica dei giri veloci.
+	•	fastestLapTime: tempo del giro più veloce.
+	•	fastestLapSpeed: velocità media del giro veloce.
+	•	statusId: motivo per cui ha concluso o abbandonato (collegamento alla tabella status).
+
+⸻
+
+STATUS
+Spiega come è finita la gara per ciascun pilota.
+	•	statusId: identificativo dello status.
+	•	status: descrizione (es. “Finished”, “Accident”, “Gearbox”…)
+
+⸻
+
+QUALIFYING
+Dati delle qualifiche del sabato, che determinano la griglia di partenza.
+	•	qualifyId: identificativo.
+	•	raceId, driverId, constructorId: riferimenti alla gara, pilota, squadra.
+	•	number: numero del pilota.
+	•	position: posizione in griglia ottenuta.
+	•	q1, q2, q3: tempi registrati nelle tre sessioni di qualifica.
+
+⸻
+
+PITSTOPS
+Dettaglia tutte le soste ai box fatte dai piloti durante la gara.
+	•	raceId, driverId: identificano gara e pilota.
+	•	stop: numero della sosta (prima, seconda, ecc.).
+	•	lap: giro in cui è entrato ai box.
+	•	time: orario del pit stop.
+	•	duration: quanto è durato.
+	•	milliseconds: durata in millisecondi.
+
+⸻
+
+LAPTIMES
+Registra tutti i tempi giro per giro di ogni pilota.
+	•	raceId, driverId, lap: identificano il tempo di un certo pilota in un certo giro.
+	•	position: posizione occupata durante quel giro.
+	•	time: tempo impiegato.
+	•	milliseconds: tempo in millisecondi.
+
+⸻
+
+DRIVERSTANDINGS
+Contiene la classifica dei piloti aggiornata dopo ogni gara.
+	•	driverStandingsId: identificativo.
+	•	raceId: a quale gara è aggiornato.
+	•	driverId: pilota.
+	•	points: punti totali.
+	•	position: posizione in classifica.
+	•	wins: gare vinte fino a quel momento.
+
+⸻
+
+CONSTRUCTORSTANDINGS
+Come sopra, ma per i team.
+	•	constructorStandingsId: identificativo.
+	•	raceId: a quale gara è aggiornata.
+	•	constructorId: scuderia.
+	•	points: punti totali.
+	•	position: posizione in classifica.
+	•	wins: gare vinte dalla scuderia.
+
+-
+CONSTRUCTOSRESULTS – (Risultati per scuderia in una gara)
+Questa tabella registra il risultato complessivo della scuderia (constructor) in una specifica gara, indipendentemente dai singoli piloti.
+	•	constructorResultsId: identificativo univoco della riga (PK).
+	•	raceId: a quale gara si riferisce (collegamento alla tabella races).
+	•	constructorId: a quale scuderia si riferisce (collegamento alla tabella constructors).
+	•	points: quanti punti ha ottenuto quella scuderia in quella gara (di solito la somma dei punti dei suoi due piloti, ma non sempre — dipende dalle regole dell’anno).
+	•	status: (in alcune versioni) può indicare un valore testuale con il risultato della scuderia (non sempre presente).
+	•	position: posizione finale della scuderia nella classifica di quella gara (es. 1, 2…).
